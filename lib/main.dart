@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:quotes_app/quotesPage.dart';
+import 'package:quotes_app/utils/routes.dart';
 
 import 'homePage.dart';
 
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+      routes: {MyRoutes.quotesRoute: ((context) => QuotesPage())},
     );
   }
 }
