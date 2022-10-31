@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quotes_app/utils/routes.dart';
 
 class MyDrawer extends StatelessWidget {
   // context is basically the element we have to use to render on the app page.
@@ -11,8 +12,8 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: Container(
         color: Colors.amber,
-        child: ListView(children: const [
-          DrawerHeader(
+        child: ListView(children: [
+          const DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.amber),
@@ -24,7 +25,7 @@ class MyDrawer extends StatelessWidget {
                   backgroundImage: NetworkImage(imgUrl),
                 ),
               )),
-          ListTile(
+          const ListTile(
             iconColor: Colors.white,
             textColor: Colors.white,
             leading: Icon(
@@ -36,7 +37,7 @@ class MyDrawer extends StatelessWidget {
               textScaleFactor: 1.2,
             ),
           ),
-          ListTile(
+          const ListTile(
             iconColor: Colors.white,
             textColor: Colors.white,
             leading: Icon(
@@ -49,25 +50,31 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, MyRoutes.feedbackRoute);
+            },
             iconColor: Colors.white,
             textColor: Colors.white,
-            leading: Icon(
+            leading: const Icon(
               CupertinoIcons.f_cursive_circle,
               size: 33.0,
             ),
-            title: Text(
+            title: const Text(
               "Feedback",
               textScaleFactor: 1.2,
             ),
           ),
           ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, MyRoutes.aboutusRoute);
+            },
             iconColor: Colors.white,
             textColor: Colors.white,
-            leading: Icon(
+            leading: const Icon(
               CupertinoIcons.info,
               size: 33.0,
             ),
-            title: Text(
+            title: const Text(
               "About Us",
               textScaleFactor: 1.2,
             ),
