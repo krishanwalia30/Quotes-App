@@ -7,12 +7,12 @@ import '../utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  String _name = "";
-  String _newname = "";
+class LoginPageState extends State<LoginPage> {
+  String name = "";
+
   bool changeButton = false;
 
   final _formkey = GlobalKey<FormState>();
@@ -33,26 +33,39 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  // This is used to call a function as soon as the app is run
   @override
   void initState() {
     super.initState();
-    _loadCounter();
+    loadName();
   }
 
-  //Loading counter value on start
-  Future<void> _loadCounter() async {
+  Future<String> transferName() async {
+    late String transfername = "";
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _name = (prefs.getString('name') ?? "");
+      transfername = (prefs.getString('name') ?? "");
+    });
+    return transfername;
+  }
+
+  //Loading name value on start
+  Future<void> loadName() async {
+    final prefs = await SharedPreferences.getInstance();
+    name = (prefs.getString('name') ?? "");
+    setState(() {
+      name = (prefs.getString('name') ?? "");
     });
   }
 
-//Incrementing counter after click
-  Future<void> _incrementCounter() async {
+  String newname = "";
+
+//Changing name after click
+  Future<void> changeName() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _newname = _name;
-      prefs.setString('name', _newname);
+      newname = name;
+      prefs.setString('name', newname);
     });
   }
 
@@ -69,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 150,
                 ),
                 Text(
-                  "Welcome $_name",
+                  "Welcome $name",
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -85,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       TextFormField(
                         onChanged: (value) {
-                          _name = value;
+                          name = value;
                           setState(() {});
                         },
                         decoration: const InputDecoration(
@@ -97,19 +110,6 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      // TextFormField(
-                      //   obscureText: true,
-                      //   decoration: const InputDecoration(
-                      //       hintText: "Enter Password", labelText: "Password"),
-                      //   validator: (value) {
-                      //     if (value!.isEmpty) {
-                      //       return "Password cannot be empty";
-                      //     } else if (value.length < 6) {
-                      //       return "Password length must be atleast 6";
-                      //     }
-                      //     return null;
-                      //   },
-                      // ),
                       const SizedBox(
                         height: 25.0,
                       ),
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                             BorderRadius.circular(changeButton ? 40 : 4.0),
                         child: InkWell(
                           onTap: () async {
-                            _incrementCounter();
+                            changeName();
                             moveToHome(context);
                           },
                           child: AnimatedContainer(
@@ -143,7 +143,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      // Text(_loadCounter().toString()),
                     ],
                   ),
                 )
