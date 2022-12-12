@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:quotes_app/quotesPage.dart';
+import 'package:quotes_app/pages/aboutusPage.dart';
+import 'package:quotes_app/pages/feedbackPage.dart';
+import 'package:quotes_app/pages/loginPage.dart';
+import 'package:quotes_app/pages/quotesPage.dart';
 import 'package:quotes_app/utils/routes.dart';
 
-import 'homePage.dart';
+import 'pages/homePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +27,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
-      routes: {MyRoutes.quotesRoute: ((context) => QuotesPage())},
+      home: LoginPage(),
+      initialRoute: MyRoutes.loginRoute,
+      routes: {
+        MyRoutes.quotesRoute: ((context) => QuotesPage()),
+        MyRoutes.aboutusRoute: ((context) => AboutusPage()),
+        MyRoutes.feedbackRoute: ((context) => FeedbackPage()),
+        MyRoutes.loginRoute: ((context) => LoginPage()),
+        MyRoutes.homeRoute: ((context) => HomePage()),
+      },
     );
   }
 }
