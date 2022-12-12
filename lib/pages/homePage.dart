@@ -42,10 +42,16 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text("Hello $sname"),
             ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, MyRoutes.quotesRoute);
+              },
+              child: const Text('Show Quotes'),
+            ),
+            ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.quotesRoute);
+                  Navigator.pushNamed(context, MyRoutes.userquotesRoute);
                 },
-                child: const Text('Show Quotes'))
+                child: const Text('YOUR QUOTES')),
           ],
         ),
       ),

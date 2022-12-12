@@ -3,5 +3,6 @@ class MyRoutes {
   static String aboutusRoute = '/aboutuspage';
   static String feedbackRoute = '/feedbackpage';
   static String loginRoute = '/loginpage';
-  static String homeRoute ='/homepage';
+  static String homeRoute = '/homepage';
+  static String userquotesRoute = '/userquotespage';
 }

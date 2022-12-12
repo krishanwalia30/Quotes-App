@@ -43,13 +43,6 @@ class _QuotesPageState extends State<QuotesPage> {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            // This Button was used to call the function readJson
-            // and now that pupose is served by overriding void init function
-            // ElevatedButton(
-            //   onPressed: readJson,
-            //   child: const Text('Show Quotes'),
-            // ),
-
             // Display the data loaded from sample.json
             _items.isNotEmpty
                 ? Expanded(
