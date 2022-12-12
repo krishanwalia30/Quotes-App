@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quotes_app/utils/routes.dart';
 
 class UserQuotesPage extends StatefulWidget {
   late final String quote;
@@ -34,14 +35,14 @@ class _UserQuotesPageState extends State<UserQuotesPage> {
                       color: Colors.amber.shade100,
                       child: ListTile(
                         title: Text(
-                          snapshot.data!.docs[index]['quote'],
+                          document['quote'],
                           style: GoogleFonts.pacifico(
                             color: Colors.deepOrange,
                             fontSize: 30,
                           ),
                         ),
                         subtitle: Text(
-                            "By- " + snapshot.data!.docs[index]["username"]),
+                            "By- " + document["username"]),
                       ),
                     );
                   },
@@ -52,6 +53,7 @@ class _UserQuotesPageState extends State<UserQuotesPage> {
         child: Icon(Icons.add),
         onPressed: () {
           print("the floating action button on the yourQUotes page is clicked");
+          Navigator.pushNamed(context, MyRoutes.addquoteRoute);
           // TO move to user to add his quote page.
         },
       ),

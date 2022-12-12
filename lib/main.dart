@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:quotes_app/firebase_options.dart';
 import 'package:quotes_app/pages/aboutusPage.dart';
+import 'package:quotes_app/pages/addquotePage.dart';
 import 'package:quotes_app/pages/feedbackPage.dart';
 import 'package:quotes_app/pages/loginPage.dart';
 import 'package:quotes_app/pages/quotesPage.dart';
@@ -85,6 +86,7 @@ class _MyAppState extends State<MyApp> {
         MyRoutes.loginRoute: ((context) => LoginPage()),
         MyRoutes.homeRoute: ((context) => HomePage()),
         MyRoutes.userquotesRoute: ((context) => UserQuotesPage()),
+        MyRoutes.addquoteRoute: ((context) => AddQuotePage()),
       },
     );
   }
