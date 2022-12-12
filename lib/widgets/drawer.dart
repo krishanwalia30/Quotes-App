@@ -1,10 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quotes_app/utils/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MyDrawer extends StatelessWidget {
-  // context is basically the element we have to use to render on the app page.
-  // widget tree=> element tree => render tree,
+class MyDrawer extends StatefulWidget {
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  late String name = "";
+
+  @override
+  void initState() {
+    super.initState();
+    loadName();
+  }
+
+  //Loading name value on start
+  Future<void> loadName() async {
+    final prefs = await SharedPreferences.getInstance();
+    name = (prefs.getString('name') ?? "");
+    setState(() {
+      name = (prefs.getString('name') ?? "");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const imgUrl =
@@ -13,18 +34,46 @@ class MyDrawer extends StatelessWidget {
       child: Container(
         color: Colors.amber,
         child: ListView(children: [
-          const DrawerHeader(
-              padding: EdgeInsets.zero,
-              child: UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.amber),
-                margin: EdgeInsets.zero,
-                accountName: const Text('Krishan Walia'),
-                accountEmail: const Text('krishanw30@gmail.com'),
-                // currentAccountPicture: Image.network(imgUrl),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(imgUrl),
-                ),
-              )),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            alignment: Alignment.topLeft,
+            color: Colors.amber,
+            height: 82,
+            child: const CircleAvatar(
+              backgroundImage: NetworkImage(imgUrl),
+              radius: 25,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
+            child: Text('$name'),
+          ),
+          // DrawerHeader(
+          //   padding: EdgeInsets.zero,
+          //   child: Container(
+          //     padding: EdgeInsets.all(16.0),
+          //     alignment: Alignment.topLeft,
+          //     color: Colors.black,
+          //     height: 200,
+          //     child: const CircleAvatar(
+          //       backgroundImage: NetworkImage(imgUrl),
+          //       radius: 25,
+          //     ),
+          //   ),
+
+          // decoration: BoxDecoration(color: Colors.amber,),
+          // child: UserAccountsDrawerHeader(
+          //   decoration: BoxDecoration(color: Colors.amber),
+          //   margin: EdgeInsets.zero,
+          //   accountName: const Text('Krishan Walia'),
+          //   accountEmail: const Text('krishanw30@gmail.com'),
+          //   // currentAccountPicture: Image.network(imgUrl),
+          //   currentAccountPicture: CircleAvatar(
+          //     backgroundImage: NetworkImage(imgUrl),
+          //   ),
+          // ),
+          // ),
+
           const ListTile(
             iconColor: Colors.white,
             textColor: Colors.white,
