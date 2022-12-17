@@ -48,32 +48,6 @@ class _MyDrawerState extends State<MyDrawer> {
             padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
             child: Text('$name'),
           ),
-          // DrawerHeader(
-          //   padding: EdgeInsets.zero,
-          //   child: Container(
-          //     padding: EdgeInsets.all(16.0),
-          //     alignment: Alignment.topLeft,
-          //     color: Colors.black,
-          //     height: 200,
-          //     child: const CircleAvatar(
-          //       backgroundImage: NetworkImage(imgUrl),
-          //       radius: 25,
-          //     ),
-          //   ),
-
-          // decoration: BoxDecoration(color: Colors.amber,),
-          // child: UserAccountsDrawerHeader(
-          //   decoration: BoxDecoration(color: Colors.amber),
-          //   margin: EdgeInsets.zero,
-          //   accountName: const Text('Krishan Walia'),
-          //   accountEmail: const Text('krishanw30@gmail.com'),
-          //   // currentAccountPicture: Image.network(imgUrl),
-          //   currentAccountPicture: CircleAvatar(
-          //     backgroundImage: NetworkImage(imgUrl),
-          //   ),
-          // ),
-          // ),
-
           const ListTile(
             iconColor: Colors.white,
             textColor: Colors.white,
